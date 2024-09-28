@@ -1,0 +1,577 @@
+$ aws ec2 describe-vpcs --vpc-ids vpc-067c712bca8fdb2ec --region us-east-1
+urllib3\connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'ec2.us-east-1.amazonaws.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+{                                                                                                                                                                                                    
+    "Vpcs": [
+        {
+            "CidrBlock": "10.10.0.0/16",
+            "DhcpOptionsId": "dopt-e6641381",
+            "State": "available",
+            "VpcId": "vpc-067c712bca8fdb2ec",
+            "OwnerId": "628913298676",
+            "InstanceTenancy": "default",
+            "CidrBlockAssociationSet": [
+                {
+                    "AssociationId": "vpc-cidr-assoc-0b59f6f376f6d2619",
+                    "CidrBlock": "10.10.0.0/16",                                                                                                                                                     
+                    "CidrBlockState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "IsDefault": false,
+            "Tags": [
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-east-1:628913298676:stack/TwDevStack/9a781260-feec-11ec-ad3e-129de3b26a09"
+                },
+                {                                                                                                                                                                                    
+                    "Key": "Name",
+                    "Value": "TwDevStack/Vpc"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "Vpc8378EB38"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "TwDevStack"
+                }
+            ]                                                                                                                                                                                        
+        }
+    ]
+}
+
+
+$ aws ec2 describe-subnets --filters "Name=vpc-id,Values=vpc-067c712bca8fdb2ec" --region us-east-1
+urllib3\connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'ec2.us-east-1.amazonaws.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+{                                                                                                                                                                                                    
+    "Subnets": [
+        {
+            "AvailabilityZone": "us-east-1a",
+            "AvailabilityZoneId": "use1-az2",
+            "AvailableIpAddressCount": 4084,
+            "CidrBlock": "10.10.48.0/20",
+            "DefaultForAz": false,
+            "MapPublicIpOnLaunch": false,
+            "MapCustomerOwnedIpOnLaunch": false,
+            "State": "available",
+            "SubnetId": "subnet-015b04f082b50d99f",
+            "VpcId": "vpc-067c712bca8fdb2ec",                                                                                                                                                        
+            "OwnerId": "628913298676",
+            "AssignIpv6AddressOnCreation": false,
+            "Ipv6CidrBlockAssociationSet": [],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "TwDevStack/Vpc/PublicSubnet1a"
+                }
+            ],
+            "SubnetArn": "arn:aws:ec2:us-east-1:628913298676:subnet/subnet-015b04f082b50d99f",
+            "EnableDns64": false,
+            "Ipv6Native": false,                                                                                                                                                                     
+            "PrivateDnsNameOptionsOnLaunch": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            }
+        },
+        {
+            "AvailabilityZone": "us-east-1c",
+            "AvailabilityZoneId": "use1-az6",
+            "AvailableIpAddressCount": 4073,
+            "CidrBlock": "10.10.32.0/20",
+            "DefaultForAz": false,                                                                                                                                                                   
+            "MapPublicIpOnLaunch": true,
+            "MapCustomerOwnedIpOnLaunch": false,
+            "State": "available",
+            "SubnetId": "subnet-0cfb7d1f3d9a94975",
+            "VpcId": "vpc-067c712bca8fdb2ec",
+            "OwnerId": "628913298676",
+            "AssignIpv6AddressOnCreation": false,
+            "Ipv6CidrBlockAssociationSet": [],
+            "Tags": [
+                {
+                    "Key": "aws-cdk:subnet-name",
+                    "Value": "Public"                                                                                                                                                                
+                },
+                {
+                    "Key": "aws-cdk:subnet-type",
+                    "Value": "Public"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "TwDevStack"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "TwDevStack/Vpc/PublicSubnet3"                                                                                                                                          
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "VpcPublicSubnet3SubnetBE12F0B6"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-east-1:628913298676:stack/TwDevStack/9a781260-feec-11ec-ad3e-129de3b26a09"
+                }
+            ],
+            "SubnetArn": "arn:aws:ec2:us-east-1:628913298676:subnet/subnet-0cfb7d1f3d9a94975",
+            "EnableDns64": false,                                                                                                                                                                    
+            "Ipv6Native": false,
+            "PrivateDnsNameOptionsOnLaunch": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            }
+        },
+        {
+            "AvailabilityZone": "us-east-1a",
+            "AvailabilityZoneId": "use1-az2",
+            "AvailableIpAddressCount": 4061,
+            "CidrBlock": "10.10.0.0/20",                                                                                                                                                             
+            "DefaultForAz": false,
+            "MapPublicIpOnLaunch": true,
+            "MapCustomerOwnedIpOnLaunch": false,
+            "State": "available",
+            "SubnetId": "subnet-0f3e32e66d0972c42",
+            "VpcId": "vpc-067c712bca8fdb2ec",
+            "OwnerId": "628913298676",
+            "AssignIpv6AddressOnCreation": false,
+            "Ipv6CidrBlockAssociationSet": [],
+            "Tags": [
+                {
+                    "Key": "aws:cloudformation:stack-id",                                                                                                                                            
+                    "Value": "arn:aws:cloudformation:us-east-1:628913298676:stack/TwDevStack/9a781260-feec-11ec-ad3e-129de3b26a09"
+                },
+                {
+                    "Key": "aws-cdk:subnet-name",
+                    "Value": "Private"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "TwDevStack"
+                },
+                {
+                    "Key": "aws-cdk:subnet-type",                                                                                                                                                    
+                    "Value": "Private"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "VpcPublicSubnet1Subnet5C2D37C4"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "TwDevStack/Vpc/PrivateSubnet1"
+                }
+            ],
+            "SubnetArn": "arn:aws:ec2:us-east-1:628913298676:subnet/subnet-0f3e32e66d0972c42",                                                                                                       
+            "EnableDns64": false,
+            "Ipv6Native": false,
+            "PrivateDnsNameOptionsOnLaunch": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            }
+        },
+        {
+            "AvailabilityZone": "us-east-1b",
+            "AvailabilityZoneId": "use1-az4",
+            "AvailableIpAddressCount": 4078,                                                                                                                                                         
+            "CidrBlock": "10.10.16.0/20",
+            "DefaultForAz": false,
+            "MapPublicIpOnLaunch": true,
+            "MapCustomerOwnedIpOnLaunch": false,
+            "State": "available",
+            "SubnetId": "subnet-013d67b031ea2f509",
+            "VpcId": "vpc-067c712bca8fdb2ec",
+            "OwnerId": "628913298676",
+            "AssignIpv6AddressOnCreation": false,
+            "Ipv6CidrBlockAssociationSet": [],
+            "Tags": [
+                {                                                                                                                                                                                    
+                    "Key": "aws-cdk:subnet-type",
+                    "Value": "Public"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "TwDevStack"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "TwDevStack/Vpc/PublicSubnet2"
+                },
+                {                                                                                                                                                                                    
+                    "Key": "aws-cdk:subnet-name",
+                    "Value": "Public"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-east-1:628913298676:stack/TwDevStack/9a781260-feec-11ec-ad3e-129de3b26a09"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "VpcPublicSubnet2Subnet691E08A3"
+                }
+            ],                                                                                                                                                                                       
+            "SubnetArn": "arn:aws:ec2:us-east-1:628913298676:subnet/subnet-013d67b031ea2f509",
+            "EnableDns64": false,
+            "Ipv6Native": false,
+            "PrivateDnsNameOptionsOnLaunch": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            }
+        },
+        {
+            "AvailabilityZone": "us-east-1b",
+            "AvailabilityZoneId": "use1-az4",                                                                                                                                                        
+            "AvailableIpAddressCount": 4079,
+            "CidrBlock": "10.10.64.0/20",
+            "DefaultForAz": false,
+            "MapPublicIpOnLaunch": false,
+            "MapCustomerOwnedIpOnLaunch": false,
+            "State": "available",
+            "SubnetId": "subnet-04cba7afb7dc8f72b",
+            "VpcId": "vpc-067c712bca8fdb2ec",
+            "OwnerId": "628913298676",
+            "AssignIpv6AddressOnCreation": false,
+            "Ipv6CidrBlockAssociationSet": [],
+            "Tags": [                                                                                                                                                                                
+                {
+                    "Key": "Name",
+                    "Value": "TwDevStack/Vpc/PrivateSubnet1b"
+                }
+            ],
+            "SubnetArn": "arn:aws:ec2:us-east-1:628913298676:subnet/subnet-04cba7afb7dc8f72b",
+            "EnableDns64": false,
+            "Ipv6Native": false,
+            "PrivateDnsNameOptionsOnLaunch": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false                                                                                                                                             
+            }
+        }
+    ]
+}
+
+
+
+$ aws ec2 describe-route-tables --filters "Name=vpc-id,Values=vpc-067c712bca8fdb2ec" --region us-east-1
+urllib3\connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'ec2.us-east-1.amazonaws.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+{                                                                                                                                                                                                    
+    "RouteTables": [
+        {
+            "Associations": [
+                {
+                    "Main": false,
+                    "RouteTableAssociationId": "rtbassoc-07f70cd826bcd9819",
+                    "RouteTableId": "rtb-0b26f0e562f5a55c6",
+                    "SubnetId": "subnet-0cfb7d1f3d9a94975",
+                    "AssociationState": {
+                        "State": "associated"
+                    }
+                }                                                                                                                                                                                    
+            ],
+            "PropagatingVgws": [],
+            "RouteTableId": "rtb-0b26f0e562f5a55c6",
+            "Routes": [
+                {
+                    "DestinationCidrBlock": "10.0.0.0/16",
+                    "Origin": "CreateRoute",
+                    "State": "active",
+                    "VpcPeeringConnectionId": "pcx-0be0ccd7cba237b69"
+                },
+                {
+                    "DestinationCidrBlock": "10.10.0.0/16",                                                                                                                                          
+                    "GatewayId": "local",
+                    "Origin": "CreateRouteTable",
+                    "State": "active"
+                },
+                {
+                    "DestinationCidrBlock": "0.0.0.0/0",
+                    "GatewayId": "igw-026f851bee3409422",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                },
+                {
+                    "DestinationPrefixListId": "pl-02cd2c6b",                                                                                                                                        
+                    "GatewayId": "vpce-0b336e39cc92fabdf",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                },
+                {
+                    "DestinationPrefixListId": "pl-63a5400a",
+                    "GatewayId": "vpce-0c6781d87134a19eb",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                }
+            ],
+            "Tags": [                                                                                                                                                                                
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-east-1:628913298676:stack/TwDevStack/9a781260-feec-11ec-ad3e-129de3b26a09"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "TwDevStack/Vpc/PublicSubnet3"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "TwDevStack"
+                },                                                                                                                                                                                   
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "VpcPublicSubnet3RouteTable93458DBB"
+                }
+            ],
+            "VpcId": "vpc-067c712bca8fdb2ec",
+            "OwnerId": "628913298676"
+        },
+        {
+            "Associations": [
+                {
+                    "Main": false,                                                                                                                                                                   
+                    "RouteTableAssociationId": "rtbassoc-0d482949ed36bdb73",
+                    "RouteTableId": "rtb-0de1a446d851505b9",
+                    "SubnetId": "subnet-04cba7afb7dc8f72b",
+                    "AssociationState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "PropagatingVgws": [],
+            "RouteTableId": "rtb-0de1a446d851505b9",
+            "Routes": [
+                {                                                                                                                                                                                    
+                    "DestinationCidrBlock": "10.0.0.0/16",
+                    "Origin": "CreateRoute",
+                    "State": "active",
+                    "VpcPeeringConnectionId": "pcx-0be0ccd7cba237b69"
+                },
+                {
+                    "DestinationCidrBlock": "10.10.0.0/16",
+                    "GatewayId": "local",
+                    "Origin": "CreateRouteTable",
+                    "State": "active"
+                },
+                {                                                                                                                                                                                    
+                    "DestinationCidrBlock": "0.0.0.0/0",
+                    "NatGatewayId": "nat-0f14eb0801a2182a0",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                },
+                {
+                    "DestinationPrefixListId": "pl-02cd2c6b",
+                    "GatewayId": "vpce-0b336e39cc92fabdf",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                },
+                {                                                                                                                                                                                    
+                    "DestinationPrefixListId": "pl-63a5400a",
+                    "GatewayId": "vpce-0c6781d87134a19eb",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "TwDevStack/Vpc/PrivateSubnet1b"
+                }
+            ],                                                                                                                                                                                       
+            "VpcId": "vpc-067c712bca8fdb2ec",
+            "OwnerId": "628913298676"
+        },
+        {
+            "Associations": [
+                {
+                    "Main": false,
+                    "RouteTableAssociationId": "rtbassoc-0f758606cc4e74a79",
+                    "RouteTableId": "rtb-060084554990c0ff9",
+                    "SubnetId": "subnet-0f3e32e66d0972c42",
+                    "AssociationState": {
+                        "State": "associated"                                                                                                                                                        
+                    }
+                }
+            ],
+            "PropagatingVgws": [],
+            "RouteTableId": "rtb-060084554990c0ff9",
+            "Routes": [
+                {
+                    "DestinationCidrBlock": "10.0.0.0/16",
+                    "Origin": "CreateRoute",
+                    "State": "active",
+                    "VpcPeeringConnectionId": "pcx-0be0ccd7cba237b69"
+                },                                                                                                                                                                                   
+                {
+                    "DestinationCidrBlock": "10.10.0.0/16",
+                    "GatewayId": "local",
+                    "Origin": "CreateRouteTable",
+                    "State": "active"
+                },
+                {
+                    "DestinationCidrBlock": "0.0.0.0/0",
+                    "NatGatewayId": "nat-0dfda60486ba746e7",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                },                                                                                                                                                                                   
+                {
+                    "DestinationPrefixListId": "pl-02cd2c6b",
+                    "GatewayId": "vpce-0b336e39cc92fabdf",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                },
+                {
+                    "DestinationPrefixListId": "pl-63a5400a",
+                    "GatewayId": "vpce-0c6781d87134a19eb",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                }                                                                                                                                                                                    
+            ],
+            "Tags": [
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-east-1:628913298676:stack/TwDevStack/9a781260-feec-11ec-ad3e-129de3b26a09"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "VpcPublicSubnet1RouteTable6C95E38E"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",                                                                                                                                          
+                    "Value": "TwDevStack"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "TwDevStack/Vpc/PrivateSubnet1a"
+                }
+            ],
+            "VpcId": "vpc-067c712bca8fdb2ec",
+            "OwnerId": "628913298676"
+        },
+        {
+            "Associations": [                                                                                                                                                                        
+                {
+                    "Main": true,
+                    "RouteTableAssociationId": "rtbassoc-06285d9825e749eb2",
+                    "RouteTableId": "rtb-0c96a779583c0840c",
+                    "AssociationState": {
+                        "State": "associated"
+                    }
+                },
+                {
+                    "Main": false,
+                    "RouteTableAssociationId": "rtbassoc-0c4269688cf3d1df2",
+                    "RouteTableId": "rtb-0c96a779583c0840c",                                                                                                                                         
+                    "SubnetId": "subnet-015b04f082b50d99f",
+                    "AssociationState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "PropagatingVgws": [],
+            "RouteTableId": "rtb-0c96a779583c0840c",
+            "Routes": [
+                {
+                    "DestinationCidrBlock": "10.10.0.0/16",
+                    "GatewayId": "local",                                                                                                                                                            
+                    "Origin": "CreateRouteTable",
+                    "State": "active"
+                },
+                {
+                    "DestinationCidrBlock": "0.0.0.0/0",
+                    "GatewayId": "igw-026f851bee3409422",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                },
+                {
+                    "DestinationPrefixListId": "pl-02cd2c6b",
+                    "GatewayId": "vpce-0b336e39cc92fabdf",                                                                                                                                           
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                },
+                {
+                    "DestinationPrefixListId": "pl-63a5400a",
+                    "GatewayId": "vpce-0c6781d87134a19eb",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                }
+            ],
+            "Tags": [
+                {                                                                                                                                                                                    
+                    "Key": "Name",
+                    "Value": "TwDevStack/Vpc/PublicSubnet1"
+                }
+            ],
+            "VpcId": "vpc-067c712bca8fdb2ec",
+            "OwnerId": "628913298676"
+        },
+        {
+            "Associations": [
+                {
+                    "Main": false,
+                    "RouteTableAssociationId": "rtbassoc-0a6a6fa8362248f1b",                                                                                                                         
+                    "RouteTableId": "rtb-00f15138940eddde8",
+                    "SubnetId": "subnet-013d67b031ea2f509",
+                    "AssociationState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "PropagatingVgws": [],
+            "RouteTableId": "rtb-00f15138940eddde8",
+            "Routes": [
+                {
+                    "DestinationCidrBlock": "10.0.0.0/16",                                                                                                                                           
+                    "Origin": "CreateRoute",
+                    "State": "active",
+                    "VpcPeeringConnectionId": "pcx-0be0ccd7cba237b69"
+                },
+                {
+                    "DestinationCidrBlock": "10.10.0.0/16",
+                    "GatewayId": "local",
+                    "Origin": "CreateRouteTable",
+                    "State": "active"
+                },
+                {
+                    "DestinationCidrBlock": "0.0.0.0/0",                                                                                                                                             
+                    "GatewayId": "igw-026f851bee3409422",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                },
+                {
+                    "DestinationPrefixListId": "pl-02cd2c6b",
+                    "GatewayId": "vpce-0b336e39cc92fabdf",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                },
+                {
+                    "DestinationPrefixListId": "pl-63a5400a",                                                                                                                                        
+                    "GatewayId": "vpce-0c6781d87134a19eb",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "TwDevStack/Vpc/PublicSubnet2"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",                                                                                                                                          
+                    "Value": "TwDevStack"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "VpcPublicSubnet2RouteTable94F7E489"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-east-1:628913298676:stack/TwDevStack/9a781260-feec-11ec-ad3e-129de3b26a09"
+                }
+            ],
+            "VpcId": "vpc-067c712bca8fdb2ec",                                                                                                                                                        
+            "OwnerId": "628913298676"
+        }
+    ]
+}
