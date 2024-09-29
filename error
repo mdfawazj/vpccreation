@@ -1,112 +1,20 @@
-$ python ecs_pull.py
-Pulling information for ECS cluster: dev-gift-storefront
-Traceback (most recent call last):
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\urllib3\connectionpool.py", line 466, in _make_request
-    self._validate_conn(conn)
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\urllib3\connectionpool.py", line 1095, in _validate_conn
-    conn.connect()
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\urllib3\connection.py", line 652, in connect
-    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\urllib3\connection.py", line 805, in _ssl_wrap_socket_and_match_hostname
-    ssl_sock = ssl_wrap_socket(
-               ^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\urllib3\util\ssl_.py", line 465, in ssl_wrap_socket
-    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\urllib3\util\ssl_.py", line 509, in _ssl_wrap_socket_impl
-    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Program Files\Python311\Lib\ssl.py", line 517, in wrap_socket
-    return self.sslsocket_class._create(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Program Files\Python311\Lib\ssl.py", line 1104, in _create
-    self.do_handshake()
-  File "C:\Program Files\Python311\Lib\ssl.py", line 1382, in do_handshake
-    self._sslobj.do_handshake()
-ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\httpsession.py", line 464, in send
-    urllib_response = conn.urlopen(
-                      ^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\urllib3\connectionpool.py", line 843, in urlopen
-    retries = retries.increment(
-              ^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\urllib3\util\retry.py", line 449, in increment
-    raise reraise(type(error), error, _stacktrace)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\urllib3\util\util.py", line 39, in reraise
-    raise value
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\urllib3\connectionpool.py", line 789, in urlopen
-    response = self._make_request(
-               ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\urllib3\connectionpool.py", line 490, in _make_request
-    raise new_e
-urllib3.exceptions.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)
-
-During handling of the above exception, another exception occurred:
-
 Traceback (most recent call last):
   File "C:\Users\F37YHCS\fixing\ecs_pull.py", line 80, in <module>
     pull_all_cluster_info(cluster_name)
   File "C:\Users\F37YHCS\fixing\ecs_pull.py", line 73, in pull_all_cluster_info
     services_info = get_cluster_info(cluster_name)
                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\fixing\ecs_pull.py", line 13, in get_cluster_info
-    services = ecs_client.list_services(cluster=cluster_name)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\client.py", line 565, in _api_call
-    return self._make_api_call(operation_name, kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\client.py", line 1001, in _make_api_call
-    http, parsed_response = self._make_request(
-                            ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\client.py", line 1027, in _make_request
-    return self._endpoint.make_request(operation_model, request_dict)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\endpoint.py", line 119, in make_request
-    return self._send_request(request_dict, operation_model)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\endpoint.py", line 202, in _send_request
-    while self._needs_retry(
-          ^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\endpoint.py", line 354, in _needs_retry
-    responses = self._event_emitter.emit(
-                ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\hooks.py", line 412, in emit
-    return self._emitter.emit(aliased_event_name, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\hooks.py", line 256, in emit
-    return self._emit(event_name, kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\hooks.py", line 239, in _emit
-    response = handler(**kwargs)
-               ^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\retryhandler.py", line 207, in __call__
-    if self._checker(**checker_kwargs):
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\retryhandler.py", line 284, in __call__
-    should_retry = self._should_retry(
-                   ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\retryhandler.py", line 320, in _should_retry
-    return self._checker(attempt_number, response, caught_exception)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\retryhandler.py", line 363, in __call__
-    checker_response = checker(
-                       ^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\retryhandler.py", line 247, in __call__
-    return self._check_caught_exception(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\retryhandler.py", line 416, in _check_caught_exception
-    raise caught_exception
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\endpoint.py", line 281, in _do_get_response
-    http_response = self._send(request)
-                    ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\endpoint.py", line 377, in _send
-    return self.http_session.send(request)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\F37YHCS\AppData\Roaming\Python\Python311\site-packages\botocore\httpsession.py", line 491, in send
-    raise SSLError(endpoint_url=request.url, error=e)
+  File "C:\Users\F37YHCS\fixing\ecs_pull.py", line 30, in get_cluster_info
+    json.dump(task_definition, task_file, indent=4)
+  File "C:\Program Files\Python311\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "C:\Program Files\Python311\Lib\json\encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Program Files\Python311\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Program Files\Python311\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type datetime is not JSON serializable
