@@ -1,0 +1,44 @@
+{                                                                                                                                                                                                    
+    "VpcPeeringConnections": [
+        {
+            "AccepterVpcInfo": {
+                "CidrBlock": "10.0.0.0/16",
+                "CidrBlockSet": [
+                    {
+                        "CidrBlock": "10.0.0.0/16"
+                    }
+                ],
+                "OwnerId": "958612202038",
+                "VpcId": "vpc-0df7be68",
+                "Region": "us-east-1"                                                                                                                                                                
+            },
+            "RequesterVpcInfo": {
+                "CidrBlock": "10.10.0.0/16",
+                "CidrBlockSet": [
+                    {
+                        "CidrBlock": "10.10.0.0/16"
+                    }
+                ],
+                "OwnerId": "628913298676",
+                "PeeringOptions": {
+                    "AllowDnsResolutionFromRemoteVpc": false,
+                    "AllowEgressFromLocalClassicLinkToRemoteVpc": false,                                                                                                                             
+                    "AllowEgressFromLocalVpcToRemoteClassicLink": false
+                },
+                "VpcId": "vpc-067c712bca8fdb2ec",
+                "Region": "us-east-1"
+            },
+            "Status": {
+                "Code": "active",
+                "Message": "Active"
+            },
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "TwDevPcx"
+                }
+            ],
+            "VpcPeeringConnectionId": "pcx-0be0ccd7cba237b69"
+        }
+    ]
+}
