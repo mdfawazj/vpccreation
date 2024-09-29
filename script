@@ -1,0 +1,80 @@
+import boto3
+import json
+
+# Initialize clients for both regions
+ecs_client = boto3.client('ecs', region_name='us-east-1')
+elb_client = boto3.client('elbv2', region_name='us-east-1')
+
+def get_cluster_info(cluster_name):
+    """Retrieve task definitions and services from the ECS cluster."""
+    services_info = []
+    
+    # List services in the cluster
+    services = ecs_client.list_services(cluster=cluster_name)
+    
+    for service_arn in services['serviceArns']:
+        # Get detailed service info
+        service_details = ecs_client.describe_services(
+            cluster=cluster_name,
+            services=[service_arn]
+        )['services'][0]
+        services_info.append(service_details)
+        
+        # Get task definition details for each service
+        task_def_arn = service_details['taskDefinition']
+        task_definition = ecs_client.describe_task_definition(taskDefinition=task_def_arn)['taskDefinition']
+        
+        # Save task definition
+        task_def_filename = f"{task_def_arn.split('/')[-1]}_task_def.json"
+        with open(task_def_filename, 'w') as task_file:
+            json.dump(task_definition, task_file, indent=4)
+            print(f"Task definition saved: {task_def_filename}")
+    
+    return services_info
+
+def get_load_balancer_info(target_group_arn):
+    """Retrieve load balancer, target group, and listener info."""
+    target_group_details = elb_client.describe_target_groups(TargetGroupArns=[target_group_arn])['TargetGroups'][0]
+    lb_arn = target_group_details['LoadBalancerArns'][0]
+    
+    # Describe the load balancer
+    lb_details = elb_client.describe_load_balancers(LoadBalancerArns=[lb_arn])['LoadBalancers'][0]
+    
+    # Get the listeners for the load balancer
+    listeners = elb_client.describe_listeners(LoadBalancerArn=lb_arn)['Listeners']
+    
+    return {
+        'load_balancer': lb_details,
+        'target_group': target_group_details,
+        'listeners': listeners
+    }
+
+def save_service_and_lb_info(services_info):
+    """Retrieve and save the load balancer and target group details for the services."""
+    for service in services_info:
+        if 'loadBalancers' in service:
+            for lb in service['loadBalancers']:
+                target_group_arn = lb['targetGroupArn']
+                
+                # Retrieve load balancer and related info
+                lb_info = get_load_balancer_info(target_group_arn)
+                
+                # Save load balancer info to JSON files
+                lb_filename = f"{lb_info['load_balancer']['LoadBalancerName']}_lb.json"
+                with open(lb_filename, 'w') as lb_file:
+                    json.dump(lb_info, lb_file, indent=4)
+                    print(f"Load balancer info saved: {lb_filename}")
+
+def pull_all_cluster_info(cluster_name):
+    """Main function to pull all ECS and load balancer info for the cluster."""
+    print(f"Pulling information for ECS cluster: {cluster_name}")
+    
+    # Step 1: Get ECS service and task definition details
+    services_info = get_cluster_info(cluster_name)
+    
+    # Step 2: Get load balancer and target group details
+    save_service_and_lb_info(services_info)
+
+# Example usage: Pulling info for an ECS cluster in us-east-1
+cluster_name = "your-cluster-name"
+pull_all_cluster_info(cluster_name)
