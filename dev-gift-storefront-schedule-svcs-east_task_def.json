@@ -1,0 +1,127 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:628913298676:task-definition/dev-gift-storefront-schedule-svcs-east:18",
+    "containerDefinitions": [
+        {
+            "name": "dev-gift-storefront-schedule-svcs",
+            "image": "628913298676.dkr.ecr.us-east-1.amazonaws.com/dev-gift-storefront-schedule-svcs:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "containerPort": 9012,
+                    "hostPort": 9012,
+                    "protocol": "tcp",
+                    "name": "api-port",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "AWS_DYNAMO_REGION",
+                    "value": "us-east-2"
+                },
+                {
+                    "name": "OTEL_EXPORTER_OTLP_PROTOCOL",
+                    "value": "http"
+                },
+                {
+                    "name": "AWS_DYNAMO_URL",
+                    "value": "https://dynamodb.us-east-2.amazonaws.com"
+                },
+                {
+                    "name": "AWS_DYNAMO_TRANSPARENT",
+                    "value": "true"
+                },
+                {
+                    "name": "SPRING_PROFILES_ACTIVE",
+                    "value": "dev"
+                }
+            ],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [
+                {
+                    "name": "OTEL_EXPORTER_OTLP_ENDPOINT",
+                    "valueFrom": "arn:aws:secretsmanager:us-east-1:628913298676:secret:gift/storefront/nonprod-AV0CHF:OTEL_EXPORTER_OTLP_ENDPOINT::"
+                },
+                {
+                    "name": "OTEL_EXPORTER_OTLP_HEADERS",
+                    "valueFrom": "arn:aws:secretsmanager:us-east-1:628913298676:secret:gift/storefront/nonprod-AV0CHF:OTEL_EXPORTER_OTLP_HEADERS::"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/dev-gift-storefront-schedule-svcs-east",
+                    "awslogs-create-group": "true",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "dev-gift-storefront-schedule-svcs-east",
+    "taskRoleArn": "arn:aws:iam::628913298676:role/ecsGiftTaskExecutionPolicy",
+    "executionRoleArn": "arn:aws:iam::628913298676:role/ecsGiftTaskExecutionPolicy",
+    "networkMode": "awsvpc",
+    "revision": 18,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "ecs.capability.secrets.asm.environment-variables"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "ecs.capability.extensible-ephemeral-storage"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "2048",
+    "memory": "4096",
+    "registeredAt": "2024-09-27 21:39:50",
+    "registeredBy": "arn:aws:sts::628913298676:assumed-role/br-poweruser/alex.shrestha@Fiserv.com",
+    "ephemeralStorage": {
+        "sizeInGiB": 30
+    }
+}

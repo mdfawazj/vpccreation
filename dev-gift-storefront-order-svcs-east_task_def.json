@@ -1,0 +1,132 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:628913298676:task-definition/dev-gift-storefront-order-svcs-east:13",
+    "containerDefinitions": [
+        {
+            "name": "dev-gift-storefront-order-svcs",
+            "image": "628913298676.dkr.ecr.us-east-1.amazonaws.com/gift-storefront-order-svcs-east:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "containerPort": 9012,
+                    "hostPort": 9012,
+                    "protocol": "tcp",
+                    "name": "order-9012-tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "AWS_DYNAMO_REGION",
+                    "value": "us-east-1"
+                },
+                {
+                    "name": "AWS_DYNAMO_URL",
+                    "value": "https://dynamodb.us-east-1.amazonaws.com"
+                },
+                {
+                    "name": "DYNAMO_SCHEMA_PREFIX",
+                    "value": "DEV_"
+                },
+                {
+                    "name": "JAVA_OPTS",
+                    "value": "-Dotel.service.name=dev-gift-storefront-order-svcs-east"
+                },
+                {
+                    "name": "AWS_DYNAMO_TRANSPARENT",
+                    "value": "true"
+                },
+                {
+                    "name": "SPRING_PROFILES_ACTIVE",
+                    "value": "dev"
+                }
+            ],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [
+                {
+                    "name": "USER_TOKEN",
+                    "valueFrom": "arn:aws:secretsmanager:us-east-1:628913298676:secret:gift/storefront/nonprod-AV0CHF:USER_TOKEN::"
+                },
+                {
+                    "name": "WGIFTCARD_PASSWORD",
+                    "valueFrom": "arn:aws:secretsmanager:us-east-1:628913298676:secret:gift/storefront/nonprod-AV0CHF:WGIFTCARD_PASSWORD::"
+                },
+                {
+                    "name": "WGIFTCARD_URL",
+                    "valueFrom": "arn:aws:secretsmanager:us-east-1:628913298676:secret:gift/storefront/nonprod-AV0CHF:WGIFTCARD_URL::"
+                },
+                {
+                    "name": "WGIFTCARD_USERNAME",
+                    "valueFrom": "arn:aws:secretsmanager:us-east-1:628913298676:secret:gift/storefront/nonprod-AV0CHF:WGIFTCARD_USERNAME::"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/dev-gift-storefront-order-svcs-east",
+                    "awslogs-create-group": "true",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "dev-gift-storefront-order-svcs-east",
+    "taskRoleArn": "arn:aws:iam::628913298676:role/ecsGiftTaskExecutionPolicy",
+    "executionRoleArn": "arn:aws:iam::628913298676:role/ecsGiftTaskExecutionPolicy",
+    "networkMode": "awsvpc",
+    "revision": 13,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "ecs.capability.secrets.asm.environment-variables"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "4096",
+    "memory": "8192",
+    "registeredAt": "2024-09-14 08:49:03",
+    "registeredBy": "arn:aws:sts::628913298676:assumed-role/br-poweruser/alex.shrestha@Fiserv.com"
+}

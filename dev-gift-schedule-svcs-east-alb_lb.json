@@ -1,0 +1,112 @@
+{
+    "load_balancer": {
+        "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:628913298676:loadbalancer/app/dev-gift-schedule-svcs-east-alb/86654a47d10923b0",
+        "DNSName": "internal-dev-gift-schedule-svcs-east-alb-858349905.us-east-1.elb.amazonaws.com",
+        "CanonicalHostedZoneId": "Z35SXDOTRQ7X7K",
+        "CreatedTime": "2024-08-22 10:02:55",
+        "LoadBalancerName": "dev-gift-schedule-svcs-east-alb",
+        "Scheme": "internal",
+        "VpcId": "vpc-067c712bca8fdb2ec",
+        "State": {
+            "Code": "active"
+        },
+        "Type": "application",
+        "AvailabilityZones": [
+            {
+                "ZoneName": "us-east-1b",
+                "SubnetId": "subnet-013d67b031ea2f509",
+                "LoadBalancerAddresses": []
+            },
+            {
+                "ZoneName": "us-east-1a",
+                "SubnetId": "subnet-015b04f082b50d99f",
+                "LoadBalancerAddresses": []
+            }
+        ],
+        "SecurityGroups": [
+            "sg-0dc49e4b53b660be6"
+        ],
+        "IpAddressType": "ipv4"
+    },
+    "target_group": {
+        "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:628913298676:targetgroup/dev-gift-schedule-svcs-east-tg/03d58304109b9e59",
+        "TargetGroupName": "dev-gift-schedule-svcs-east-tg",
+        "Protocol": "HTTP",
+        "Port": 9012,
+        "VpcId": "vpc-067c712bca8fdb2ec",
+        "HealthCheckProtocol": "HTTP",
+        "HealthCheckPort": "traffic-port",
+        "HealthCheckEnabled": true,
+        "HealthCheckIntervalSeconds": 30,
+        "HealthCheckTimeoutSeconds": 5,
+        "HealthyThresholdCount": 5,
+        "UnhealthyThresholdCount": 2,
+        "HealthCheckPath": "/actuator/health",
+        "Matcher": {
+            "HttpCode": "200"
+        },
+        "LoadBalancerArns": [
+            "arn:aws:elasticloadbalancing:us-east-1:628913298676:loadbalancer/app/dev-gift-schedule-svcs-east-alb/86654a47d10923b0"
+        ],
+        "TargetType": "ip",
+        "ProtocolVersion": "HTTP1",
+        "IpAddressType": "ipv4"
+    },
+    "listeners": [
+        {
+            "ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:628913298676:listener/app/dev-gift-schedule-svcs-east-alb/86654a47d10923b0/073f7a5c98e64b0d",
+            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:628913298676:loadbalancer/app/dev-gift-schedule-svcs-east-alb/86654a47d10923b0",
+            "Port": 443,
+            "Protocol": "HTTPS",
+            "Certificates": [
+                {
+                    "CertificateArn": "arn:aws:acm:us-east-1:628913298676:certificate/216b7b91-f807-421f-aa26-4bd2cb297ada"
+                }
+            ],
+            "SslPolicy": "ELBSecurityPolicy-TLS13-1-2-2021-06",
+            "DefaultActions": [
+                {
+                    "Type": "forward",
+                    "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:628913298676:targetgroup/dev-gift-schedule-svcs-east-tg/03d58304109b9e59",
+                    "ForwardConfig": {
+                        "TargetGroups": [
+                            {
+                                "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:628913298676:targetgroup/dev-gift-schedule-svcs-east-tg/03d58304109b9e59",
+                                "Weight": 1
+                            }
+                        ],
+                        "TargetGroupStickinessConfig": {
+                            "Enabled": false
+                        }
+                    }
+                }
+            ],
+            "MutualAuthentication": {
+                "Mode": "off"
+            }
+        },
+        {
+            "ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:628913298676:listener/app/dev-gift-schedule-svcs-east-alb/86654a47d10923b0/ba8ee134c1127181",
+            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:628913298676:loadbalancer/app/dev-gift-schedule-svcs-east-alb/86654a47d10923b0",
+            "Port": 80,
+            "Protocol": "HTTP",
+            "DefaultActions": [
+                {
+                    "Type": "forward",
+                    "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:628913298676:targetgroup/dev-gift-schedule-svcs-east-tg/03d58304109b9e59",
+                    "ForwardConfig": {
+                        "TargetGroups": [
+                            {
+                                "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:628913298676:targetgroup/dev-gift-schedule-svcs-east-tg/03d58304109b9e59",
+                                "Weight": 1
+                            }
+                        ],
+                        "TargetGroupStickinessConfig": {
+                            "Enabled": false
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
